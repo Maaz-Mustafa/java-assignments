@@ -11,7 +11,11 @@ public class Occurrences {
         String[] wordsArray=sentence.split(" ");
         Arrays.stream(wordsArray).forEach(word->{
 
-            
+            if(countMap.containsKey(word)){
+                int count=countMap.get(word);
+                count++;
+                countMap.put(word,count);
+            }
             else{
                 countMap.put(word,1);
             }
