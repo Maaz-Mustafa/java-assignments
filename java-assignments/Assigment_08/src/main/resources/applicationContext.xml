@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!-- Bean Definition for messageService -->
+    <bean id="student" class="org.example.Student">
+        <!-- Property injection using property -->
+        <property name="name" value="maaz"/>
+        <property name="rollNo" value="100"/>
+        <constructor-arg>
+            <ref bean="address"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="address" class="org.example.Address">
+        <constructor-arg value="Pune"></constructor-arg>
+        <constructor-arg value="Maharashtra"></constructor-arg>
+        <constructor-arg value="India"></constructor-arg>
+    </bean>
+
+</beans>
