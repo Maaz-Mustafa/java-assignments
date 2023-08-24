@@ -53,8 +53,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public boolean deletePerson(int id) {
-        Person person = getPersonById(id);
         try {
+            Person person = getPersonById(id);
+            if(person==null){
+                throw new Exception();
+            }
             personRepository.delete(person);
         } catch (Exception exception) {
             return false;
