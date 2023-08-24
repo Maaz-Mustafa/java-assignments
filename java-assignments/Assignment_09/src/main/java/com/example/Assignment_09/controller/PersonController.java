@@ -1,13 +1,10 @@
 package com.example.Assignment_09.controller;
 
+import com.example.Assignment_09.dto.OuterPersonDTO;
 import com.example.Assignment_09.entity.Person;
 import com.example.Assignment_09.service.PersonService;
-import org.aspectj.weaver.patterns.PerObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +21,27 @@ public class PersonController {
     public List<Person> getAllPersons(){
         return personService.getallPersons();
     }
+
+    @PostMapping
+    public boolean save(@RequestBody OuterPersonDTO personDTO){
+        System.out.println(personDTO );
+
+
+//        OuterPersonDTO personDTO=(OuterPersonDTO)person;
+//        System.out.println(personDTO.getPersonList());
+        return personService.savePerson(personDTO);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean delete(@PathVariable int id){
+        return personService.deletePerson(id);
+    }
+
+    @PutMapping
+    public Person update(@RequestBody Person person){
+        return personService.updatePerson(person);
+    }
+
 
 }
